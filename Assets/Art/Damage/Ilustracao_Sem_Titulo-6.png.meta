@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: b013afbd26fdea4aaac618f80bb920da
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3410645067343771923
+    second: Ilustracao_Sem_Titulo-6_0
+  - first:
+      213: 3573971217955433253
+    second: Ilustracao_Sem_Titulo-6_1
+  - first:
+      213: 7317289190825458724
+    second: Ilustracao_Sem_Titulo-6_2
+  - first:
+      213: -789074116958634454
+    second: Ilustracao_Sem_Titulo-6_3
+  - first:
+      213: -6603470362241701370
+    second: Ilustracao_Sem_Titulo-6_4
+  - first:
+      213: -1356893509734135790
+    second: Ilustracao_Sem_Titulo-6_5
+  - first:
+      213: -1077088621390110968
+    second: Ilustracao_Sem_Titulo-6_6
+  - first:
+      213: -7565435884567791772
+    second: Ilustracao_Sem_Titulo-6_7
+  - first:
+      213: -3439281965601049045
+    second: Ilustracao_Sem_Titulo-6_8
+  - first:
+      213: 8013103998571580187
+    second: Ilustracao_Sem_Titulo-6_9
+  - first:
+      213: -7358238913216037646
+    second: Ilustracao_Sem_Titulo-6_10
+  - first:
+      213: 2483670615541476380
+    second: Ilustracao_Sem_Titulo-6_11
+  - first:
+      213: -3457453998336278272
+    second: Ilustracao_Sem_Titulo-6_12
+  - first:
+      213: -6637806624414426490
+    second: Ilustracao_Sem_Titulo-6_13
+  - first:
+      213: -21218740438282826
+    second: Ilustracao_Sem_Titulo-6_14
+  - first:
+      213: 1202343327265669162
+    second: Ilustracao_Sem_Titulo-6_15
+  - first:
+      213: -5295848668340047912
+    second: Ilustracao_Sem_Titulo-6_16
+  - first:
+      213: 3802258457538891169
+    second: Ilustracao_Sem_Titulo-6_17
+  - first:
+      213: -5780163692436240647
+    second: Ilustracao_Sem_Titulo-6_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_0
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 1699
+        width: 25
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de64902b164faa0d0800000000000000
+      internalID: -3410645067343771923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_1
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 1620
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52b24b313eb499130800000000000000
+      internalID: 3573971217955433253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_2
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 1588
+        width: 11
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42cf4f910cb3c8560800000000000000
+      internalID: 7317289190825458724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_3
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 1566
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2eb9357545ac05f0800000000000000
+      internalID: -789074116958634454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_4
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 940
+        width: 433
+        height: 617
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a63c531b2cb54a0800000000000000
+      internalID: -6603470362241701370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_5
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 1533
+        width: 29
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2188342ca885b2de0800000000000000
+      internalID: -1356893509734135790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_6
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 1471
+        width: 63
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80f5d620b996d01f0800000000000000
+      internalID: -1077088621390110968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_7
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 1349
+        width: 305
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467f759752c220790800000000000000
+      internalID: -7565435884567791772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_8
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 917
+        width: 295
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2631fd36473540d0800000000000000
+      internalID: -3439281965601049045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_9
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1370
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1b0f17a1a3443f60800000000000000
+      internalID: 8013103998571580187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_10
+      rect:
+        serializedVersion: 2
+        x: 902
+        y: 1205
+        width: 141
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fc3d4da1b842e990800000000000000
+      internalID: -7358238913216037646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_11
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 1153
+        width: 64
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1cec6a0445c77220800000000000000
+      internalID: 2483670615541476380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_12
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 1042
+        width: 100
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00189e928e7a400d0800000000000000
+      internalID: -3457453998336278272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_13
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 902
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68a1b003b06c1e3a0800000000000000
+      internalID: -6637806624414426490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_14
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 903
+        width: 131
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bd48910bad94bff0800000000000000
+      internalID: -21218740438282826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_15
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 787
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a204bb7c2e49fa010800000000000000
+      internalID: 1202343327265669162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_16
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 678
+        width: 24
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dfad5bd1bd5186b0800000000000000
+      internalID: -5295848668340047912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_17
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 694
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ad84d10ce554c430800000000000000
+      internalID: 3802258457538891169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ilustracao_Sem_Titulo-6_18
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 646
+        width: 28
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f64ab01fbbb8cfa0800000000000000
+      internalID: -5780163692436240647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ilustracao_Sem_Titulo-6_0: -3410645067343771923
+      Ilustracao_Sem_Titulo-6_1: 3573971217955433253
+      Ilustracao_Sem_Titulo-6_10: -7358238913216037646
+      Ilustracao_Sem_Titulo-6_11: 2483670615541476380
+      Ilustracao_Sem_Titulo-6_12: -3457453998336278272
+      Ilustracao_Sem_Titulo-6_13: -6637806624414426490
+      Ilustracao_Sem_Titulo-6_14: -21218740438282826
+      Ilustracao_Sem_Titulo-6_15: 1202343327265669162
+      Ilustracao_Sem_Titulo-6_16: -5295848668340047912
+      Ilustracao_Sem_Titulo-6_17: 3802258457538891169
+      Ilustracao_Sem_Titulo-6_18: -5780163692436240647
+      Ilustracao_Sem_Titulo-6_2: 7317289190825458724
+      Ilustracao_Sem_Titulo-6_3: -789074116958634454
+      Ilustracao_Sem_Titulo-6_4: -6603470362241701370
+      Ilustracao_Sem_Titulo-6_5: -1356893509734135790
+      Ilustracao_Sem_Titulo-6_6: -1077088621390110968
+      Ilustracao_Sem_Titulo-6_7: -7565435884567791772
+      Ilustracao_Sem_Titulo-6_8: -3439281965601049045
+      Ilustracao_Sem_Titulo-6_9: 8013103998571580187
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
