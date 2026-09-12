@@ -5,7 +5,6 @@ public class CheeseController : MonoBehaviour
 {
     [Header("Health")]
     [SerializeField, Min(1)] private int maxHealth = 1000;
-    [SerializeField] private CharacterShooter characterShooter;
 
     [Header("Appearance")]
     [SerializeField, Min(0.01f)] private float shrinkDuration = 0.15f;
@@ -35,11 +34,15 @@ public class CheeseController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (characterShooter == null)
-            characterShooter = FindFirstObjectByType<CharacterShooter>();
+        if (!IsAlive)
+            return;
 
-        if (characterShooter != null)
-            characterShooter.FireAt(this);
+        CharacterShooter attacker = CharacterShooter.Active;
+        if (attacker == null)
+            attacker = FindAnyObjectByType<CharacterShooter>();
+
+        if (attacker != null)
+            attacker.Attack(this);
     }
 
     public void InitializeHealth(int newMaxHealth)
