@@ -29,7 +29,10 @@ public class CharacterShooter : MonoBehaviour
     [SerializeField] private bool automaticAttackUnlocked;
     [SerializeField] private bool automaticAttackEnabled;
 
-    private Coroutine animationCoroutine;
+    private bool isAttacking;
+    private bool attackQueued;
+    private CheeseController currentTarget;
+    private Coroutine attackCoroutine;
     private float nextAutomaticAttackTime;
 
     public bool AutomaticAttackUnlocked => automaticAttackUnlocked;
@@ -53,6 +56,17 @@ public class CharacterShooter : MonoBehaviour
     {
         if (Active == this)
             Active = null;
+
+        if (currentTarget != null)
+            currentTarget.Died -= HandleTargetDied;
+
+        if (attackCoroutine != null)
+            StopCoroutine(attackCoroutine);
+
+        isAttacking = false;
+        attackQueued = false;
+        currentTarget = null;
+        attackCoroutine = null;
     }
 
     private void Update()
@@ -74,8 +88,14 @@ public class CharacterShooter : MonoBehaviour
         if (target == null || !target.IsAlive)
             return;
 
-        PlayAttackAnimation();
-        StartCoroutine(ResolveAttack(target));
+        if (!isAttacking)
+        {
+            BeginAttack(target);
+            return;
+        }
+
+        if (target == currentTarget && currentTarget.IsAlive)
+            attackQueued = true;
     }
 
     // The automatic-attack shop card can call this after a successful purchase.
@@ -93,21 +113,73 @@ public class CharacterShooter : MonoBehaviour
             nextAutomaticAttackTime = Time.time;
     }
 
-    private IEnumerator ResolveAttack(CheeseController target)
+    private void BeginAttack(CheeseController target)
     {
+        if (target == null || !target.IsAlive)
+            return;
+
+        isAttacking = true;
+        attackQueued = false;
+        currentTarget = target;
+        currentTarget.Died += HandleTargetDied;
+        attackCoroutine = StartCoroutine(AttackSequence(target));
+    }
+
+    private IEnumerator AttackSequence(CheeseController target)
+    {
+        PlayAttackAnimation();
+
         if (hitDelay > 0f)
             yield return new WaitForSeconds(hitDelay);
 
-        if (target == null || !target.IsAlive)
-            yield break;
-
-        if (attackType == AttackType.Projectile)
+        if (target != null && target.IsAlive)
         {
-            LaunchProjectile(target);
-            yield break;
+            if (attackType == AttackType.Projectile)
+                LaunchProjectile(target);
+            else
+                target.TakeDamage(damage, target.HitPosition);
         }
 
-        target.TakeDamage(damage, target.HitPosition);
+        float remainingAnimationTime = Mathf.Max(0f, animationDuration - hitDelay);
+        if (remainingAnimationTime > 0f)
+            yield return new WaitForSeconds(remainingAnimationTime);
+
+        FinishAttack(target);
+    }
+
+    private void FinishAttack(CheeseController target)
+    {
+        bool canRunQueuedAttack =
+            attackQueued &&
+            currentTarget == target &&
+            currentTarget != null &&
+            currentTarget.IsAlive &&
+            currentTarget.CurrentHealth > 0;
+
+        CheeseController queuedTarget = canRunQueuedAttack ? currentTarget : null;
+
+        if (currentTarget != null)
+            currentTarget.Died -= HandleTargetDied;
+
+        isAttacking = false;
+        attackQueued = false;
+        currentTarget = null;
+        attackCoroutine = null;
+
+        if (canRunQueuedAttack)
+            BeginAttack(queuedTarget);
+        else
+            ShowIdlePose();
+    }
+
+    private void HandleTargetDied(CheeseController deadCheese)
+    {
+        if (deadCheese != currentTarget)
+            return;
+
+        deadCheese.Died -= HandleTargetDied;
+        attackQueued = false;
+        currentTarget = null;
     }
 
     private void LaunchProjectile(CheeseController target)
@@ -133,18 +205,6 @@ public class CharacterShooter : MonoBehaviour
         animator.enabled = true;
         animator.Play(0, 0, 0f);
         animator.Update(0f);
-
-        if (animationCoroutine != null)
-            StopCoroutine(animationCoroutine);
-
-        animationCoroutine = StartCoroutine(StopAnimationAfterDelay());
-    }
-
-    private IEnumerator StopAnimationAfterDelay()
-    {
-        yield return new WaitForSeconds(Mathf.Max(0.01f, animationDuration));
-        ShowIdlePose();
-        animationCoroutine = null;
     }
 
     private void ShowIdlePose()

@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df97ef4cf2884d02daf2772fc4f36ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheeseController
-  clickDamage: 100
+  maxHealth: 1000
+  shrinkDuration: 0.15
   bottomColliderInset: 0.25
 --- !u!114 &6742158601245793201
 MonoBehaviour:
@@ -206,7 +207,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5, z: 0}
-  m_LocalScale: {x: 0.1741, y: 0.1494, z: 1}
+  m_LocalScale: {x: 0.29071218, y: 0.22980708, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 251905131826332175}

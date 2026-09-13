@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,7 +16,10 @@ public class CheeseController : MonoBehaviour
     private Coroutine shrinkCoroutine;
     private SpriteRenderer cheeseSpriteRenderer;
 
+    public event Action<CheeseController> Died;
+
     public bool IsAlive => cheeseLife > 0 && isActiveAndEnabled;
+    public int CurrentHealth => cheeseLife;
     public Vector3 HitPosition => cheeseSpriteRenderer != null
         ? cheeseSpriteRenderer.bounds.center : transform.position;
 
@@ -88,6 +92,7 @@ public class CheeseController : MonoBehaviour
 
     private void DestroyCheese()
     {
+        Died?.Invoke(this);
         gameObject.SetActive(false);
         GameAssets assets = GameAssets.Instance;
         if (assets != null && assets.CheeseSpawner != null)
