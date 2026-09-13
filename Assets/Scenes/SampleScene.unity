@@ -1206,7 +1206,7 @@ SpriteRenderer:
   m_Size: {x: 16.860945, y: 12.3399105}
   m_AdaptiveModeThreshold: 0.324
   m_SpriteTileMode: 1
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!4 &1333282763
@@ -1322,7 +1322,7 @@ SpriteRenderer:
   m_Size: {x: 12.02, y: 15.673691}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!4 &1372028290
@@ -1730,7 +1730,7 @@ SpriteRenderer:
   m_Size: {x: 14.73, y: 16.47388}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!114 &1858492439
@@ -1869,7 +1869,7 @@ SpriteRenderer:
   m_Size: {x: 30.000002, y: 30.000002}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!114 &1894479130
@@ -2394,7 +2394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4880527333839222762, guid: e517cc8ac30bff0e98344ffbcc3a499e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.17
+      value: 10.46
       objectReference: {fileID: 0}
     - target: {fileID: 5364050950879393423, guid: e517cc8ac30bff0e98344ffbcc3a499e, type: 3}
       propertyPath: m_Name
