@@ -19,6 +19,7 @@ public class CharacterShooter : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
     [SerializeField, Min(0.01f)] private float animationDuration = 0.5f;
+    [SerializeField] private bool continuousAnimation;
 
     [Header("Projectile")]
     [SerializeField] private Transform firePoint;
@@ -31,12 +32,19 @@ public class CharacterShooter : MonoBehaviour
 
     private bool isAttacking;
     private bool attackQueued;
+    private AttackSource queuedAttackSource;
     private CheeseController currentTarget;
     private Coroutine attackCoroutine;
     private float nextAutomaticAttackTime;
 
     public bool AutomaticAttackUnlocked => automaticAttackUnlocked;
     public bool AutomaticAttackEnabled => automaticAttackEnabled;
+
+    public void MakeActiveManualAttacker()
+    {
+        if (isActiveAndEnabled)
+            Active = this;
+    }
 
     private void Awake()
     {
@@ -65,40 +73,56 @@ public class CharacterShooter : MonoBehaviour
 
         isAttacking = false;
         attackQueued = false;
+        queuedAttackSource = AttackSource.Manual;
         currentTarget = null;
         attackCoroutine = null;
     }
 
     private void Update()
     {
-        if (!automaticAttackUnlocked || !automaticAttackEnabled ||
+        if (!automaticAttackUnlocked || !automaticAttackEnabled || isAttacking ||
             Time.time < nextAutomaticAttackTime)
             return;
 
         CheeseController target = FindTarget();
+
         if (target == null)
             return;
 
-        nextAutomaticAttackTime = Time.time + Mathf.Max(0.1f, automaticAttackInterval);
-        Attack(target);
+        bool attackAccepted = Attack(target, AttackSource.Automatic);
+
+        if (!attackAccepted)
+            return;
+
+        float speedMultiplier = GetAttackSpeedMultiplier();
+        float effectiveAutomaticInterval = automaticAttackInterval / speedMultiplier;
+        nextAutomaticAttackTime = Time.time + Mathf.Max(0.1f, effectiveAutomaticInterval);
     }
 
-    public void Attack(CheeseController target)
+    public bool Attack(CheeseController target, AttackSource source = AttackSource.Manual)
     {
         if (target == null || !target.IsAlive)
-            return;
+            return false;
 
         if (!isAttacking)
         {
-            BeginAttack(target);
-            return;
+            BeginAttack(target, source);
+            return true;
         }
 
-        if (target == currentTarget && currentTarget.IsAlive)
+        if (source == AttackSource.Automatic)
+            return false;
+
+        if (target == currentTarget && currentTarget.IsAlive && !attackQueued)
+        {
             attackQueued = true;
+            queuedAttackSource = source;
+            return true;
+        }
+
+        return false;
     }
 
-    // The automatic-attack shop card can call this after a successful purchase.
     public void UnlockAutomaticAttack()
     {
         automaticAttackUnlocked = true;
@@ -113,7 +137,7 @@ public class CharacterShooter : MonoBehaviour
             nextAutomaticAttackTime = Time.time;
     }
 
-    private void BeginAttack(CheeseController target)
+    private void BeginAttack(CheeseController target, AttackSource source)
     {
         if (target == null || !target.IsAlive)
             return;
@@ -122,29 +146,68 @@ public class CharacterShooter : MonoBehaviour
         attackQueued = false;
         currentTarget = target;
         currentTarget.Died += HandleTargetDied;
-        attackCoroutine = StartCoroutine(AttackSequence(target));
+        attackCoroutine = StartCoroutine(AttackSequence(target, source));
     }
 
-    private IEnumerator AttackSequence(CheeseController target)
+    private IEnumerator AttackSequence(CheeseController target, AttackSource source)
     {
-        PlayAttackAnimation();
+        float speedMultiplier = GetAttackSpeedMultiplier();
+        float effectiveAnimationDuration =
+            Mathf.Max(0.01f, animationDuration / speedMultiplier);
+        float effectiveHitDelay = Mathf.Clamp(
+            hitDelay / speedMultiplier, 0f, effectiveAnimationDuration);
 
-        if (hitDelay > 0f)
-            yield return new WaitForSeconds(hitDelay);
+        PlayAttackAnimation(speedMultiplier);
+
+        if (effectiveHitDelay > 0f)
+            yield return new WaitForSeconds(effectiveHitDelay);
 
         if (target != null && target.IsAlive)
         {
             if (attackType == AttackType.Projectile)
-                LaunchProjectile(target);
+                LaunchProjectile(target, source);
             else
-                target.TakeDamage(damage, target.HitPosition);
+            {
+                int appliedDamage = target.TakeDamage(GetAttackDamage(), target.HitPosition);
+
+                if (appliedDamage > 0)
+                    RewardSuccessfulHit(source);
+            }
         }
 
-        float remainingAnimationTime = Mathf.Max(0f, animationDuration - hitDelay);
+        float remainingAnimationTime = effectiveAnimationDuration - effectiveHitDelay;
         if (remainingAnimationTime > 0f)
             yield return new WaitForSeconds(remainingAnimationTime);
 
         FinishAttack(target);
+    }
+
+    private void RewardSuccessfulHit(AttackSource source)
+    {
+        GameAssets assets = GameAssets.Instance;
+
+        if (assets != null && assets.CombatRewards != null)
+            assets.CombatRewards.RewardSuccessfulHit(source);
+    }
+
+    private float GetAttackSpeedMultiplier()
+    {
+        GameAssets assets = GameAssets.Instance;
+
+        if (assets == null || assets.PlayerProgress == null)
+            return 1f;
+
+        return Mathf.Max(0.1f, assets.PlayerProgress.AttackSpeedMultiplier);
+    }
+
+    private int GetAttackDamage()
+    {
+        GameAssets assets = GameAssets.Instance;
+        float multiplier = assets != null && assets.PlayerProgress != null
+            ? assets.PlayerProgress.AttackDamageMultiplier
+            : 1f;
+
+        return Mathf.Max(1, Mathf.RoundToInt(damage * multiplier));
     }
 
     private void FinishAttack(CheeseController target)
@@ -158,16 +221,19 @@ public class CharacterShooter : MonoBehaviour
 
         CheeseController queuedTarget = canRunQueuedAttack ? currentTarget : null;
 
+        AttackSource nextAttackSource = queuedAttackSource;
+
         if (currentTarget != null)
             currentTarget.Died -= HandleTargetDied;
 
         isAttacking = false;
         attackQueued = false;
+        queuedAttackSource = AttackSource.Manual;
         currentTarget = null;
         attackCoroutine = null;
 
         if (canRunQueuedAttack)
-            BeginAttack(queuedTarget);
+            BeginAttack(queuedTarget, nextAttackSource);
         else
             ShowIdlePose();
     }
@@ -179,10 +245,11 @@ public class CharacterShooter : MonoBehaviour
 
         deadCheese.Died -= HandleTargetDied;
         attackQueued = false;
+        queuedAttackSource = AttackSource.Manual;
         currentTarget = null;
     }
 
-    private void LaunchProjectile(CheeseController target)
+    private void LaunchProjectile(CheeseController target, AttackSource source)
     {
         if (firePoint == null || projectilePrefab == null)
         {
@@ -194,15 +261,22 @@ public class CharacterShooter : MonoBehaviour
         Transform parent = assets != null ? assets.EffectsParent : null;
         CheeseProjectile projectile = Instantiate(
             projectilePrefab, firePoint.position, Quaternion.identity, parent);
-        projectile.Launch(target, damage);
+        projectile.Launch(target, GetAttackDamage(), source);
     }
 
-    private void PlayAttackAnimation()
+    private void PlayAttackAnimation(float speedMultiplier)
     {
         if (animator == null || animator.runtimeAnimatorController == null)
             return;
 
+        if (continuousAnimation)
+        {
+            animator.enabled = true;
+            return;
+        }
+
         animator.enabled = true;
+        animator.speed = speedMultiplier;
         animator.Play(0, 0, 0f);
         animator.Update(0f);
     }
@@ -213,9 +287,12 @@ public class CharacterShooter : MonoBehaviour
             return;
 
         animator.enabled = true;
+        animator.speed = 1f;
         animator.Play(0, 0, 0f);
         animator.Update(0f);
-        animator.enabled = false;
+
+        if (!continuousAnimation)
+            animator.enabled = false;
     }
 
     private static CheeseController FindTarget()

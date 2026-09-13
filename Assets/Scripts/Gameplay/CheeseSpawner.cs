@@ -7,7 +7,6 @@ public class CheeseSpawner : MonoBehaviour
     [SerializeField] private Transform cheesesParent;
 
     private int spriteIndex;
-
     public void SpawnCheese(int maxHealth)
     {
         GameAssets assets = GameAssets.Instance;
@@ -32,7 +31,10 @@ public class CheeseSpawner : MonoBehaviour
     private void ApplyNextSprite(GameObject cheese, Sprite[] sprites)
     {
         SpriteRenderer spriteRenderer = cheese.GetComponentInChildren<SpriteRenderer>();
-        if (spriteRenderer == null || sprites == null || sprites.Length == 0)
+        if (spriteRenderer == null)
+            return;
+
+        if (sprites == null || sprites.Length == 0)
             return;
 
         spriteIndex %= sprites.Length;

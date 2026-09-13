@@ -12,22 +12,37 @@ public class GameAssets : MonoBehaviour
     [SerializeField] private DamagePopup damagePopupPrefab;
     [SerializeField] private DamageEffect damageEffectPrefab;
 
+    [Header("Shop Assets")]
+    [SerializeField] private Sprite attackSpeedIcon;
+    [SerializeField] private Sprite attackDamageIcon;
+    [SerializeField] private Sprite cheeseCoinIcon;
+
     [Header("Scene References")]
     [SerializeField] private Camera worldCamera;
     [SerializeField] private CheeseSpawner cheeseSpawner;
     [SerializeField] private RectTransform damageCanvas;
     [SerializeField] private Transform effectsParent;
     [SerializeField] private HealthBar cheeseHealthBar;
+    [SerializeField] private CombatRewardSystem combatRewardSystem;
+    [SerializeField] private PlayerProgress playerProgress;
+
+
 
     public GameObject CheesePrefab => cheesePrefab;
     public Sprite[] CheeseSprites => cheeseSprites;
     public DamagePopup DamagePopupPrefab => damagePopupPrefab;
     public DamageEffect DamageEffectPrefab => damageEffectPrefab;
+    public Sprite AttackSpeedIcon => attackSpeedIcon;
+    public Sprite AttackDamageIcon => attackDamageIcon;
+    public Sprite CheeseCoinIcon => cheeseCoinIcon;
     public Camera WorldCamera => worldCamera;
     public CheeseSpawner CheeseSpawner => cheeseSpawner;
     public RectTransform DamageCanvas => damageCanvas;
     public Transform EffectsParent => effectsParent;
     public HealthBar CheeseHealthBar => cheeseHealthBar;
+    public CombatRewardSystem CombatRewards => combatRewardSystem;
+    public PlayerProgress PlayerProgress => playerProgress;
+
 
     private void Awake()
     {

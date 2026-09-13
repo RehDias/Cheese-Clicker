@@ -41,12 +41,8 @@ public class CheeseController : MonoBehaviour
         if (!IsAlive)
             return;
 
-        CharacterShooter attacker = CharacterShooter.Active;
-        if (attacker == null)
-            attacker = FindAnyObjectByType<CharacterShooter>();
-
-        if (attacker != null)
-            attacker.Attack(this);
+        foreach (CharacterShooter attacker in FindObjectsByType<CharacterShooter>())
+            attacker.Attack(this, AttackSource.Manual);
     }
 
     public void InitializeHealth(int newMaxHealth)
@@ -56,26 +52,28 @@ public class CheeseController : MonoBehaviour
         UpdateHealthBar();
     }
 
-    public void TakeDamage(int damage, Vector3 hitPosition)
+    public int TakeDamage(int damage, Vector3 hitPosition)
     {
         if (!IsAlive || damage <= 0)
-            return;
+            return 0;
 
         int appliedDamage = Mathf.Min(cheeseLife, damage);
+
         cheeseLife -= appliedDamage;
         UpdateHealthBar();
         ShowDamageFeedback(appliedDamage, hitPosition);
 
         if (cheeseLife == 0)
-        {
             DestroyCheese();
-            return;
+        else
+        {
+            if (shrinkCoroutine != null)
+                StopCoroutine(shrinkCoroutine);
+
+            shrinkCoroutine = StartCoroutine(ShrinkCheese());
         }
 
-        if (shrinkCoroutine != null)
-            StopCoroutine(shrinkCoroutine);
-
-        shrinkCoroutine = StartCoroutine(ShrinkCheese());
+        return appliedDamage;
     }
 
     private void ShowDamageFeedback(int damage, Vector3 hitPosition)
